@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="miniprojectModelStoreContainer" CdmEntityContainer="miniprojectEntities">
+    <EntitySetMapping Name="AdminDetails">
+      <EntityTypeMapping TypeName="miniprojectModel.AdminDetail">
+        <MappingFragment StoreEntitySet="AdminDetails">
+          <ScalarProperty Name="Admin_Id" ColumnName="Admin_Id" />
+          <ScalarProperty Name="Admin_Name" ColumnName="Admin_Name" />
+          <ScalarProperty Name="Admin_passcode" ColumnName="Admin_passcode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ticket_Booking">
+      <EntityTypeMapping TypeName="miniprojectModel.Ticket_Booking">
+        <MappingFragment StoreEntitySet="Ticket_Booking">
+          <ScalarProperty Name="PNR_No" ColumnName="PNR_No" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="Train_No" ColumnName="Train_No" />
+          <ScalarProperty Name="TotalFare" ColumnName="TotalFare" />
+          <ScalarProperty Name="Booking_time_date" ColumnName="Booking_time_date" />
+          <ScalarProperty Name="tktstatus" ColumnName="tktstatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrainDetails">
+      <EntityTypeMapping TypeName="miniprojectModel.TrainDetail">
+        <MappingFragment StoreEntitySet="TrainDetails">
+          <ScalarProperty Name="Train_No" ColumnName="Train_No" />
+          <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
+          <ScalarProperty Name="Destination" ColumnName="Destination" />
+          <ScalarProperty Name="train_stat" ColumnName="train_stat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserDetails">
+      <EntityTypeMapping TypeName="miniprojectModel.UserDetail">
+        <MappingFragment StoreEntitySet="UserDetails">
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fares">
+      <EntityTypeMapping TypeName="miniprojectModel.Fare">
+        <MappingFragment StoreEntitySet="Fare">
+          <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+          <ScalarProperty Name="Train_No" ColumnName="Train_No" />
+          <ScalarProperty Name="C1_AC" ColumnName="1_AC" />
+          <ScalarProperty Name="C2_AC" ColumnName="2_AC" />
+          <ScalarProperty Name="SL" ColumnName="SL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Seats">
+      <EntityTypeMapping TypeName="miniprojectModel.Seat">
+        <MappingFragment StoreEntitySet="Seat">
+          <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+          <ScalarProperty Name="Train_No" ColumnName="Train_No" />
+          <ScalarProperty Name="C1_AC" ColumnName="1_AC" />
+          <ScalarProperty Name="C2_AC" ColumnName="2_AC" />
+          <ScalarProperty Name="SL" ColumnName="SL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Add_fare" FunctionName="miniprojectModel.Store.Add_fare" />
+    <FunctionImportMapping FunctionImportName="Add_seat" FunctionName="miniprojectModel.Store.Add_seat" />
+    <FunctionImportMapping FunctionImportName="AddTrain" FunctionName="miniprojectModel.Store.AddTrain" />
+    <FunctionImportMapping FunctionImportName="modifytrain" FunctionName="miniprojectModel.Store.modifytrain" />
+    <FunctionImportMapping FunctionImportName="Softdeletetrain" FunctionName="miniprojectModel.Store.Softdeletetrain" />
+    <FunctionImportMapping FunctionImportName="SeatManageProc" FunctionName="miniprojectModel.Store.SeatManageProc" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,458 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="miniprojectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminDetails">
+          <Key>
+            <PropertyRef Name="Admin_Id" />
+          </Key>
+          <Property Name="Admin_Id" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="Admin_Name" Type="varchar" MaxLength="35" />
+          <Property Name="Admin_passcode" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'miniproject.dbo.Fare' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Fare">
+          <Key>
+            <PropertyRef Name="SerialNo" />
+          </Key>
+          <Property Name="SerialNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Train_No" Type="numeric" Precision="5" Scale="0" />
+          <Property Name="1_AC" Type="int" />
+          <Property Name="2_AC" Type="int" />
+          <Property Name="SL" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'miniproject.dbo.Seat' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Seat">
+          <Key>
+            <PropertyRef Name="SerialNo" />
+          </Key>
+          <Property Name="SerialNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Train_No" Type="numeric" Precision="5" Scale="0" />
+          <Property Name="1_AC" Type="int" />
+          <Property Name="2_AC" Type="int" />
+          <Property Name="SL" Type="int" />
+        </EntityType>
+        <EntityType Name="Ticket_Booking">
+          <Key>
+            <PropertyRef Name="PNR_No" />
+          </Key>
+          <Property Name="PNR_No" Type="numeric" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="User_Id" Type="numeric" Precision="3" Scale="0" />
+          <Property Name="Train_No" Type="numeric" Precision="5" Scale="0" />
+          <Property Name="TotalFare" Type="float" />
+          <Property Name="Booking_time_date" Type="datetime" />
+          <Property Name="tktstatus" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TrainDetails">
+          <Key>
+            <PropertyRef Name="Train_No" />
+          </Key>
+          <Property Name="Train_No" Type="numeric" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="Train_Name" Type="varchar" MaxLength="45" />
+          <Property Name="Source" Type="varchar" MaxLength="20" />
+          <Property Name="Destination" Type="varchar" MaxLength="20" />
+          <Property Name="train_stat" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="UserDetails">
+          <Key>
+            <PropertyRef Name="User_Id" />
+          </Key>
+          <Property Name="User_Id" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="User_Name" Type="varchar" MaxLength="30" />
+          <Property Name="password" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK__Fare__Train_No__37A5467C">
+          <End Role="TrainDetails" Type="Self.TrainDetails" Multiplicity="0..1" />
+          <End Role="Fare" Type="Self.Fare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrainDetails">
+              <PropertyRef Name="Train_No" />
+            </Principal>
+            <Dependent Role="Fare">
+              <PropertyRef Name="Train_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Seat__Train_No__398D8EEE">
+          <End Role="TrainDetails" Type="Self.TrainDetails" Multiplicity="0..1" />
+          <End Role="Seat" Type="Self.Seat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrainDetails">
+              <PropertyRef Name="Train_No" />
+            </Principal>
+            <Dependent Role="Seat">
+              <PropertyRef Name="Train_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ticket_Bo__Train__70DDC3D8">
+          <End Role="TrainDetails" Type="Self.TrainDetails" Multiplicity="0..1" />
+          <End Role="Ticket_Booking" Type="Self.Ticket_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrainDetails">
+              <PropertyRef Name="Train_No" />
+            </Principal>
+            <Dependent Role="Ticket_Booking">
+              <PropertyRef Name="Train_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ticket_Bo__User___6FE99F9F">
+          <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="0..1" />
+          <End Role="Ticket_Booking" Type="Self.Ticket_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDetails">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="Ticket_Booking">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Add_fare" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="train_no" Type="int" Mode="In" />
+          <Parameter Name="fir_AcFare" Type="int" Mode="In" />
+          <Parameter Name="Sec_AcFare" Type="int" Mode="In" />
+          <Parameter Name="slpFare" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Add_seat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="train_no" Type="int" Mode="In" />
+          <Parameter Name="fir_Ac" Type="int" Mode="In" />
+          <Parameter Name="Sec_Ac" Type="int" Mode="In" />
+          <Parameter Name="slp" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AddTrain" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tno" Type="numeric" Mode="In" />
+          <Parameter Name="tname" Type="varchar" Mode="In" />
+          <Parameter Name="source" Type="varchar" Mode="In" />
+          <Parameter Name="dest" Type="varchar" Mode="In" />
+          <Parameter Name="sts" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="modifytrain" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="trainno" Type="int" Mode="In" />
+          <Parameter Name="source" Type="varchar" Mode="In" />
+          <Parameter Name="dest" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SeatManageProc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TrainNo" Type="numeric" Mode="In" />
+          <Parameter Name="Class" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Softdeletetrain" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="trainno" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="miniprojectModelStoreContainer">
+          <EntitySet Name="AdminDetails" EntityType="Self.AdminDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ticket_Booking" EntityType="Self.Ticket_Booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrainDetails" EntityType="Self.TrainDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserDetails" EntityType="Self.UserDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fare" EntityType="Self.Fare" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Fare].[SerialNo] AS [SerialNo], 
+    [Fare].[Train_No] AS [Train_No], 
+    [Fare].[1_AC] AS [1_AC], 
+    [Fare].[2_AC] AS [2_AC], 
+    [Fare].[SL] AS [SL]
+    FROM [dbo].[Fare] AS [Fare]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Seat" EntityType="Self.Seat" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Seat].[SerialNo] AS [SerialNo], 
+    [Seat].[Train_No] AS [Train_No], 
+    [Seat].[1_AC] AS [1_AC], 
+    [Seat].[2_AC] AS [2_AC], 
+    [Seat].[SL] AS [SL]
+    FROM [dbo].[Seat] AS [Seat]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Fare__Train_No__37A5467C" Association="Self.FK__Fare__Train_No__37A5467C">
+            <End Role="TrainDetails" EntitySet="TrainDetails" />
+            <End Role="Fare" EntitySet="Fare" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Seat__Train_No__398D8EEE" Association="Self.FK__Seat__Train_No__398D8EEE">
+            <End Role="TrainDetails" EntitySet="TrainDetails" />
+            <End Role="Seat" EntitySet="Seat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ticket_Bo__Train__70DDC3D8" Association="Self.FK__Ticket_Bo__Train__70DDC3D8">
+            <End Role="TrainDetails" EntitySet="TrainDetails" />
+            <End Role="Ticket_Booking" EntitySet="Ticket_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ticket_Bo__User___6FE99F9F" Association="Self.FK__Ticket_Bo__User___6FE99F9F">
+            <End Role="UserDetails" EntitySet="UserDetails" />
+            <End Role="Ticket_Booking" EntitySet="Ticket_Booking" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="miniprojectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdminDetail">
+          <Key>
+            <PropertyRef Name="Admin_Id" />
+          </Key>
+          <Property Name="Admin_Id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="Admin_Name" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="Admin_passcode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Ticket_Booking">
+          <Key>
+            <PropertyRef Name="PNR_No" />
+          </Key>
+          <Property Name="PNR_No" Type="Decimal" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="User_Id" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="Train_No" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="TotalFare" Type="Double" />
+          <Property Name="Booking_time_date" Type="DateTime" Precision="3" />
+          <Property Name="tktstatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TrainDetail" Relationship="Self.FK__Ticket_Bo__Train__70DDC3D8" FromRole="Ticket_Booking" ToRole="TrainDetails" />
+          <NavigationProperty Name="UserDetail" Relationship="Self.FK__Ticket_Bo__User___6FE99F9F" FromRole="Ticket_Booking" ToRole="UserDetails" />
+        </EntityType>
+        <EntityType Name="TrainDetail">
+          <Key>
+            <PropertyRef Name="Train_No" />
+          </Key>
+          <Property Name="Train_No" Type="Decimal" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="Train_Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Source" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Destination" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="train_stat" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Ticket_Booking" Relationship="Self.FK__Ticket_Bo__Train__70DDC3D8" FromRole="TrainDetails" ToRole="Ticket_Booking" />
+          <NavigationProperty Name="Fares" Relationship="Self.FK__Fare__Train_No__37A5467C" FromRole="TrainDetails" ToRole="Fare" />
+          <NavigationProperty Name="Seats" Relationship="Self.FK__Seat__Train_No__398D8EEE" FromRole="TrainDetails" ToRole="Seat" />
+        </EntityType>
+        <EntityType Name="UserDetail">
+          <Key>
+            <PropertyRef Name="User_Id" />
+          </Key>
+          <Property Name="User_Id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="User_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Ticket_Booking" Relationship="Self.FK__Ticket_Bo__User___6FE99F9F" FromRole="UserDetails" ToRole="Ticket_Booking" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Fare">
+          <Key>
+            <PropertyRef Name="SerialNo" />
+          </Key>
+          <Property Name="SerialNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Train_No" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="C1_AC" Type="Int32" />
+          <Property Name="C2_AC" Type="Int32" />
+          <Property Name="SL" Type="Int32" />
+          <NavigationProperty Name="TrainDetail" Relationship="Self.FK__Fare__Train_No__37A5467C" FromRole="Fare" ToRole="TrainDetails" />
+        </EntityType>
+        <EntityType Name="Seat">
+          <Key>
+            <PropertyRef Name="SerialNo" />
+          </Key>
+          <Property Name="SerialNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Train_No" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="C1_AC" Type="Int32" />
+          <Property Name="C2_AC" Type="Int32" />
+          <Property Name="SL" Type="Int32" />
+          <NavigationProperty Name="TrainDetail" Relationship="Self.FK__Seat__Train_No__398D8EEE" FromRole="Seat" ToRole="TrainDetails" />
+        </EntityType>
+        <Association Name="FK__Ticket_Bo__Train__70DDC3D8">
+          <End Role="TrainDetails" Type="Self.TrainDetail" Multiplicity="0..1" />
+          <End Role="Ticket_Booking" Type="Self.Ticket_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrainDetails">
+              <PropertyRef Name="Train_No" />
+            </Principal>
+            <Dependent Role="Ticket_Booking">
+              <PropertyRef Name="Train_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ticket_Bo__User___6FE99F9F">
+          <End Role="UserDetails" Type="Self.UserDetail" Multiplicity="0..1" />
+          <End Role="Ticket_Booking" Type="Self.Ticket_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDetails">
+              <PropertyRef Name="User_Id" />
+            </Principal>
+            <Dependent Role="Ticket_Booking">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Fare__Train_No__37A5467C">
+          <End Role="TrainDetails" Type="Self.TrainDetail" Multiplicity="0..1" />
+          <End Role="Fare" Type="Self.Fare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrainDetails">
+              <PropertyRef Name="Train_No" />
+            </Principal>
+            <Dependent Role="Fare">
+              <PropertyRef Name="Train_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Seat__Train_No__398D8EEE">
+          <End Role="TrainDetails" Type="Self.TrainDetail" Multiplicity="0..1" />
+          <End Role="Seat" Type="Self.Seat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrainDetails">
+              <PropertyRef Name="Train_No" />
+            </Principal>
+            <Dependent Role="Seat">
+              <PropertyRef Name="Train_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="miniprojectEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminDetails" EntityType="Self.AdminDetail" />
+          <EntitySet Name="Ticket_Booking" EntityType="Self.Ticket_Booking" />
+          <EntitySet Name="TrainDetails" EntityType="Self.TrainDetail" />
+          <EntitySet Name="UserDetails" EntityType="Self.UserDetail" />
+          <EntitySet Name="Fares" EntityType="Self.Fare" />
+          <EntitySet Name="Seats" EntityType="Self.Seat" />
+          <AssociationSet Name="FK__Ticket_Bo__Train__70DDC3D8" Association="Self.FK__Ticket_Bo__Train__70DDC3D8">
+            <End Role="TrainDetails" EntitySet="TrainDetails" />
+            <End Role="Ticket_Booking" EntitySet="Ticket_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ticket_Bo__User___6FE99F9F" Association="Self.FK__Ticket_Bo__User___6FE99F9F">
+            <End Role="UserDetails" EntitySet="UserDetails" />
+            <End Role="Ticket_Booking" EntitySet="Ticket_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Fare__Train_No__37A5467C" Association="Self.FK__Fare__Train_No__37A5467C">
+            <End Role="TrainDetails" EntitySet="TrainDetails" />
+            <End Role="Fare" EntitySet="Fares" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Seat__Train_No__398D8EEE" Association="Self.FK__Seat__Train_No__398D8EEE">
+            <End Role="TrainDetails" EntitySet="TrainDetails" />
+            <End Role="Seat" EntitySet="Seats" />
+          </AssociationSet>
+          <FunctionImport Name="Add_fare">
+            <Parameter Name="train_no" Mode="In" Type="Int32" />
+            <Parameter Name="fir_AcFare" Mode="In" Type="Int32" />
+            <Parameter Name="Sec_AcFare" Mode="In" Type="Int32" />
+            <Parameter Name="slpFare" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Add_seat">
+            <Parameter Name="train_no" Mode="In" Type="Int32" />
+            <Parameter Name="fir_Ac" Mode="In" Type="Int32" />
+            <Parameter Name="Sec_Ac" Mode="In" Type="Int32" />
+            <Parameter Name="slp" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AddTrain">
+            <Parameter Name="tno" Mode="In" Type="Decimal" />
+            <Parameter Name="tname" Mode="In" Type="String" />
+            <Parameter Name="source" Mode="In" Type="String" />
+            <Parameter Name="dest" Mode="In" Type="String" />
+            <Parameter Name="sts" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="modifytrain">
+            <Parameter Name="trainno" Mode="In" Type="Int32" />
+            <Parameter Name="source" Mode="In" Type="String" />
+            <Parameter Name="dest" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Softdeletetrain">
+          <Parameter Name="trainno" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SeatManageProc">
+            <Parameter Name="TrainNo" Mode="In" Type="Decimal" />
+            <Parameter Name="Class" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="miniprojectModelStoreContainer" CdmEntityContainer="miniprojectEntities">
+          <EntitySetMapping Name="AdminDetails">
+            <EntityTypeMapping TypeName="miniprojectModel.AdminDetail">
+              <MappingFragment StoreEntitySet="AdminDetails">
+                <ScalarProperty Name="Admin_Id" ColumnName="Admin_Id" />
+                <ScalarProperty Name="Admin_Name" ColumnName="Admin_Name" />
+                <ScalarProperty Name="Admin_passcode" ColumnName="Admin_passcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ticket_Booking">
+            <EntityTypeMapping TypeName="miniprojectModel.Ticket_Booking">
+              <MappingFragment StoreEntitySet="Ticket_Booking">
+                <ScalarProperty Name="PNR_No" ColumnName="PNR_No" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="Train_No" ColumnName="Train_No" />
+                <ScalarProperty Name="TotalFare" ColumnName="TotalFare" />
+                <ScalarProperty Name="Booking_time_date" ColumnName="Booking_time_date" />
+                <ScalarProperty Name="tktstatus" ColumnName="tktstatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrainDetails">
+            <EntityTypeMapping TypeName="miniprojectModel.TrainDetail">
+              <MappingFragment StoreEntitySet="TrainDetails">
+                <ScalarProperty Name="Train_No" ColumnName="Train_No" />
+                <ScalarProperty Name="Train_Name" ColumnName="Train_Name" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Destination" ColumnName="Destination" />
+                <ScalarProperty Name="train_stat" ColumnName="train_stat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserDetails">
+            <EntityTypeMapping TypeName="miniprojectModel.UserDetail">
+              <MappingFragment StoreEntitySet="UserDetails">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fares">
+            <EntityTypeMapping TypeName="miniprojectModel.Fare">
+              <MappingFragment StoreEntitySet="Fare">
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="Train_No" ColumnName="Train_No" />
+                <ScalarProperty Name="C1_AC" ColumnName="1_AC" />
+                <ScalarProperty Name="C2_AC" ColumnName="2_AC" />
+                <ScalarProperty Name="SL" ColumnName="SL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Seats">
+            <EntityTypeMapping TypeName="miniprojectModel.Seat">
+              <MappingFragment StoreEntitySet="Seat">
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="Train_No" ColumnName="Train_No" />
+                <ScalarProperty Name="C1_AC" ColumnName="1_AC" />
+                <ScalarProperty Name="C2_AC" ColumnName="2_AC" />
+                <ScalarProperty Name="SL" ColumnName="SL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Add_fare" FunctionName="miniprojectModel.Store.Add_fare" />
+          <FunctionImportMapping FunctionImportName="Add_seat" FunctionName="miniprojectModel.Store.Add_seat" />
+          <FunctionImportMapping FunctionImportName="AddTrain" FunctionName="miniprojectModel.Store.AddTrain" />
+          <FunctionImportMapping FunctionImportName="modifytrain" FunctionName="miniprojectModel.Store.modifytrain" />
+          <FunctionImportMapping FunctionImportName="Softdeletetrain" FunctionName="miniprojectModel.Store.Softdeletetrain" />
+          <FunctionImportMapping FunctionImportName="SeatManageProc" FunctionName="miniprojectModel.Store.SeatManageProc" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

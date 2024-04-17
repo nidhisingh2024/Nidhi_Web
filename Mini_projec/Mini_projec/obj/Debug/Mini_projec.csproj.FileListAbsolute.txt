@@ -1,0 +1,11 @@
+D:\WebTechnology\Mini_projec\Mini_projec\bin\Debug\Mini_projec.exe.config
+D:\WebTechnology\Mini_projec\Mini_projec\bin\Debug\Mini_projec.exe
+D:\WebTechnology\Mini_projec\Mini_projec\bin\Debug\Mini_projec.pdb
+D:\WebTechnology\Mini_projec\Mini_projec\bin\Debug\EntityFramework.dll
+D:\WebTechnology\Mini_projec\Mini_projec\bin\Debug\EntityFramework.SqlServer.dll
+D:\WebTechnology\Mini_projec\Mini_projec\bin\Debug\EntityFramework.xml
+D:\WebTechnology\Mini_projec\Mini_projec\bin\Debug\EntityFramework.SqlServer.xml
+D:\WebTechnology\Mini_projec\Mini_projec\obj\Debug\Mini_projec.csproj.CoreCompileInputs.cache
+D:\WebTechnology\Mini_projec\Mini_projec\obj\Debug\Mini_projec.csproj.CopyComplete
+D:\WebTechnology\Mini_projec\Mini_projec\obj\Debug\Mini_projec.exe
+D:\WebTechnology\Mini_projec\Mini_projec\obj\Debug\Mini_projec.pdb
