@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odd Even Checker</title>
+</head>
+<body>
+    <h2>Even and Odd Numbers</h2>
+    <ul id="result"></ul>
+
+    <script>
+        // JavaScript code
+        document.addEventListener("DOMContentLoaded", function () {
+            var resultElement = document.getElementById("result");
+
+            for (let i = 0; i <= 15; i++) {
+                var listItem = document.createElement("li");
+                if (i % 2 === 0) {
+                    listItem.textContent = i + " is even";
+                } else {
+                    listItem.textContent = i + " is odd";
+                }
+                resultElement.appendChild(listItem);
+            }
+        });
+    </script>
+</body>
+</html>
+

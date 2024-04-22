@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Button</title>
+    <style>
+        h2 {
+            color: lightgreen; 
+        }
+
+        /* Style the button */
+        #myButton {
+            background-color:cadetblue; 
+            color: white;
+            padding: 10px 20px; 
+            border: none; 
+            cursor: pointer; 
+            border-radius: 5px; 
+        }
+
+            #myButton:hover {
+                background-color:beige; 
+            }
+    </style>
+</head>
+<body>
+    <h2>Click Button</h2>
+    <div id="buttonContainer"></div>
+
+    <script>
+        var buttonContainer = document.getElementById("buttonContainer");
+
+        var buttonHTML = '<button id="myButton">Click Me</button>';
+
+        buttonContainer.innerHTML = buttonHTML;
+    </script>
+
+    <script>
+        document.getElementById("myButton").addEventListener("click", function () {
+            console.log("Button clicked!");
+        });
+    </script>
+</body>
+</html>
+
