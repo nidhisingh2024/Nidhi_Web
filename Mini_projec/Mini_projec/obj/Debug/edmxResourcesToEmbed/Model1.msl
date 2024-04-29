@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="miniprojectModelStoreContainer" CdmEntityContainer="miniprojectEntities">
+  <EntityContainerMapping StorageEntityContainer="miniprojectModelStoreContainer" CdmEntityContainer="miniprojectEntities1">
     <EntitySetMapping Name="AdminDetails">
       <EntityTypeMapping TypeName="miniprojectModel.AdminDetail">
         <MappingFragment StoreEntitySet="AdminDetails">
@@ -13,6 +13,7 @@
     <EntitySetMapping Name="Ticket_Booking">
       <EntityTypeMapping TypeName="miniprojectModel.Ticket_Booking">
         <MappingFragment StoreEntitySet="Ticket_Booking">
+          <ScalarProperty Name="tktClass" ColumnName="tktClass" />
           <ScalarProperty Name="PNR_No" ColumnName="PNR_No" />
           <ScalarProperty Name="User_Id" ColumnName="User_Id" />
           <ScalarProperty Name="Train_No" ColumnName="Train_No" />
@@ -36,9 +37,9 @@
     <EntitySetMapping Name="UserDetails">
       <EntityTypeMapping TypeName="miniprojectModel.UserDetail">
         <MappingFragment StoreEntitySet="UserDetails">
-          <ScalarProperty Name="password" ColumnName="password" />
           <ScalarProperty Name="User_Id" ColumnName="User_Id" />
           <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+          <ScalarProperty Name="password" ColumnName="password" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -68,7 +69,10 @@
     <FunctionImportMapping FunctionImportName="Add_seat" FunctionName="miniprojectModel.Store.Add_seat" />
     <FunctionImportMapping FunctionImportName="AddTrain" FunctionName="miniprojectModel.Store.AddTrain" />
     <FunctionImportMapping FunctionImportName="modifytrain" FunctionName="miniprojectModel.Store.modifytrain" />
-    <FunctionImportMapping FunctionImportName="Softdeletetrain" FunctionName="miniprojectModel.Store.Softdeletetrain" />
     <FunctionImportMapping FunctionImportName="SeatManageProc" FunctionName="miniprojectModel.Store.SeatManageProc" />
+    <FunctionImportMapping FunctionImportName="Softdeletetrain" FunctionName="miniprojectModel.Store.Softdeletetrain" />
+    <FunctionImportMapping FunctionImportName="addFare" FunctionName="miniprojectModel.Store.addFare" />
+    <FunctionImportMapping FunctionImportName="addseat" FunctionName="miniprojectModel.Store.addseat" />
+    <FunctionImportMapping FunctionImportName="SeatManageProcCan" FunctionName="miniprojectModel.Store.SeatManageProcCan" />
   </EntityContainerMapping>
 </Mapping>

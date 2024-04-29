@@ -15,10 +15,10 @@ namespace Mini_projec
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class miniprojectEntities : DbContext
+    public partial class miniprojectEntities1 : DbContext
     {
-        public miniprojectEntities()
-            : base("name=miniprojectEntities")
+        public miniprojectEntities1()
+            : base("name=miniprojectEntities1")
         {
         }
     
@@ -118,6 +118,19 @@ namespace Mini_projec
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("modifytrain", trainnoParameter, sourceParameter, destParameter);
         }
     
+        public virtual int SeatManageProc(Nullable<decimal> trainNo, string @class)
+        {
+            var trainNoParameter = trainNo.HasValue ?
+                new ObjectParameter("TrainNo", trainNo) :
+                new ObjectParameter("TrainNo", typeof(decimal));
+    
+            var classParameter = @class != null ?
+                new ObjectParameter("Class", @class) :
+                new ObjectParameter("Class", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SeatManageProc", trainNoParameter, classParameter);
+        }
+    
         public virtual int Softdeletetrain(Nullable<int> trainno)
         {
             var trainnoParameter = trainno.HasValue ?
@@ -127,17 +140,59 @@ namespace Mini_projec
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Softdeletetrain", trainnoParameter);
         }
     
-        public virtual int SeatManageProc(Nullable<decimal> trainNo, Nullable<int> @class)
+        public virtual int addFare(Nullable<int> tno, Nullable<int> firAcf, Nullable<int> secAcf, Nullable<int> slf)
+        {
+            var tnoParameter = tno.HasValue ?
+                new ObjectParameter("tno", tno) :
+                new ObjectParameter("tno", typeof(int));
+    
+            var firAcfParameter = firAcf.HasValue ?
+                new ObjectParameter("firAcf", firAcf) :
+                new ObjectParameter("firAcf", typeof(int));
+    
+            var secAcfParameter = secAcf.HasValue ?
+                new ObjectParameter("SecAcf", secAcf) :
+                new ObjectParameter("SecAcf", typeof(int));
+    
+            var slfParameter = slf.HasValue ?
+                new ObjectParameter("Slf", slf) :
+                new ObjectParameter("Slf", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("addFare", tnoParameter, firAcfParameter, secAcfParameter, slfParameter);
+        }
+    
+        public virtual int addseat(Nullable<int> tno, Nullable<int> firAc, Nullable<int> secAc, Nullable<int> sl)
+        {
+            var tnoParameter = tno.HasValue ?
+                new ObjectParameter("tno", tno) :
+                new ObjectParameter("tno", typeof(int));
+    
+            var firAcParameter = firAc.HasValue ?
+                new ObjectParameter("firAc", firAc) :
+                new ObjectParameter("firAc", typeof(int));
+    
+            var secAcParameter = secAc.HasValue ?
+                new ObjectParameter("SecAc", secAc) :
+                new ObjectParameter("SecAc", typeof(int));
+    
+            var slParameter = sl.HasValue ?
+                new ObjectParameter("Sl", sl) :
+                new ObjectParameter("Sl", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("addseat", tnoParameter, firAcParameter, secAcParameter, slParameter);
+        }
+    
+        public virtual int SeatManageProcCan(Nullable<decimal> trainNo, string @class)
         {
             var trainNoParameter = trainNo.HasValue ?
                 new ObjectParameter("TrainNo", trainNo) :
                 new ObjectParameter("TrainNo", typeof(decimal));
     
-            var classParameter = @class.HasValue ?
+            var classParameter = @class != null ?
                 new ObjectParameter("Class", @class) :
-                new ObjectParameter("Class", typeof(int));
+                new ObjectParameter("Class", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SeatManageProc", trainNoParameter, classParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SeatManageProcCan", trainNoParameter, classParameter);
         }
     }
 }

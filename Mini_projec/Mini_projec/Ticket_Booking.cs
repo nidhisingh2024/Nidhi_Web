@@ -20,6 +20,7 @@ namespace Mini_projec
         public Nullable<double> TotalFare { get; set; }
         public Nullable<System.DateTime> Booking_time_date { get; set; }
         public string tktstatus { get; set; }
+        public string tktClass { get; set; }
     
         public virtual TrainDetail TrainDetail { get; set; }
         public virtual UserDetail UserDetail { get; set; }

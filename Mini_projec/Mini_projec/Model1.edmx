@@ -47,6 +47,7 @@ warning 6002: The table/view 'miniproject.dbo.Seat' does not have a primary key 
           <Property Name="TotalFare" Type="float" />
           <Property Name="Booking_time_date" Type="datetime" />
           <Property Name="tktstatus" Type="varchar" MaxLength="20" />
+          <Property Name="tktClass" Type="varchar" MaxLength="15" />
         </EntityType>
         <EntityType Name="TrainDetails">
           <Key>
@@ -126,6 +127,18 @@ warning 6002: The table/view 'miniproject.dbo.Seat' does not have a primary key 
           <Parameter Name="Sec_Ac" Type="int" Mode="In" />
           <Parameter Name="slp" Type="int" Mode="In" />
         </Function>
+        <Function Name="addFare" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tno" Type="int" Mode="In" />
+          <Parameter Name="firAcf" Type="int" Mode="In" />
+          <Parameter Name="SecAcf" Type="int" Mode="In" />
+          <Parameter Name="Slf" Type="int" Mode="In" />
+        </Function>
+        <Function Name="addseat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tno" Type="int" Mode="In" />
+          <Parameter Name="firAc" Type="int" Mode="In" />
+          <Parameter Name="SecAc" Type="int" Mode="In" />
+          <Parameter Name="Sl" Type="int" Mode="In" />
+        </Function>
         <Function Name="AddTrain" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="tno" Type="numeric" Mode="In" />
           <Parameter Name="tname" Type="varchar" Mode="In" />
@@ -140,7 +153,11 @@ warning 6002: The table/view 'miniproject.dbo.Seat' does not have a primary key 
         </Function>
         <Function Name="SeatManageProc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="TrainNo" Type="numeric" Mode="In" />
-          <Parameter Name="Class" Type="int" Mode="In" />
+          <Parameter Name="Class" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SeatManageProcCan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TrainNo" Type="numeric" Mode="In" />
+          <Parameter Name="Class" Type="varchar" Mode="In" />
         </Function>
         <Function Name="Softdeletetrain" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="trainno" Type="int" Mode="In" />
@@ -209,6 +226,7 @@ warning 6002: The table/view 'miniproject.dbo.Seat' does not have a primary key 
           <Property Name="tktstatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TrainDetail" Relationship="Self.FK__Ticket_Bo__Train__70DDC3D8" FromRole="Ticket_Booking" ToRole="TrainDetails" />
           <NavigationProperty Name="UserDetail" Relationship="Self.FK__Ticket_Bo__User___6FE99F9F" FromRole="Ticket_Booking" ToRole="UserDetails" />
+          <Property Name="tktClass" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TrainDetail">
           <Key>
@@ -229,8 +247,8 @@ warning 6002: The table/view 'miniproject.dbo.Seat' does not have a primary key 
           </Key>
           <Property Name="User_Id" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
           <Property Name="User_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Ticket_Booking" Relationship="Self.FK__Ticket_Bo__User___6FE99F9F" FromRole="UserDetails" ToRole="Ticket_Booking" />
           <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Ticket_Booking" Relationship="Self.FK__Ticket_Bo__User___6FE99F9F" FromRole="UserDetails" ToRole="Ticket_Booking" />
         </EntityType>
         <EntityType Name="Fare">
           <Key>
@@ -302,7 +320,7 @@ warning 6002: The table/view 'miniproject.dbo.Seat' does not have a primary key 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="miniprojectEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="miniprojectEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AdminDetails" EntityType="Self.AdminDetail" />
           <EntitySet Name="Ticket_Booking" EntityType="Self.Ticket_Booking" />
           <EntitySet Name="TrainDetails" EntityType="Self.TrainDetail" />
@@ -349,12 +367,28 @@ warning 6002: The table/view 'miniproject.dbo.Seat' does not have a primary key 
             <Parameter Name="source" Mode="In" Type="String" />
             <Parameter Name="dest" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="SeatManageProc">
+            <Parameter Name="TrainNo" Mode="In" Type="Decimal" />
+            <Parameter Name="Class" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="Softdeletetrain">
           <Parameter Name="trainno" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SeatManageProc">
+          <FunctionImport Name="addFare">
+            <Parameter Name="tno" Mode="In" Type="Int32" />
+            <Parameter Name="firAcf" Mode="In" Type="Int32" />
+            <Parameter Name="SecAcf" Mode="In" Type="Int32" />
+            <Parameter Name="Slf" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="addseat">
+            <Parameter Name="tno" Mode="In" Type="Int32" />
+            <Parameter Name="firAc" Mode="In" Type="Int32" />
+            <Parameter Name="SecAc" Mode="In" Type="Int32" />
+            <Parameter Name="Sl" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SeatManageProcCan">
             <Parameter Name="TrainNo" Mode="In" Type="Decimal" />
-            <Parameter Name="Class" Mode="In" Type="Int32" />
+            <Parameter Name="Class" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
       </Schema>
@@ -362,7 +396,7 @@ warning 6002: The table/view 'miniproject.dbo.Seat' does not have a primary key 
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="miniprojectModelStoreContainer" CdmEntityContainer="miniprojectEntities">
+        <EntityContainerMapping StorageEntityContainer="miniprojectModelStoreContainer" CdmEntityContainer="miniprojectEntities1">
           <EntitySetMapping Name="AdminDetails">
             <EntityTypeMapping TypeName="miniprojectModel.AdminDetail">
               <MappingFragment StoreEntitySet="AdminDetails">
@@ -375,6 +409,7 @@ warning 6002: The table/view 'miniproject.dbo.Seat' does not have a primary key 
           <EntitySetMapping Name="Ticket_Booking">
             <EntityTypeMapping TypeName="miniprojectModel.Ticket_Booking">
               <MappingFragment StoreEntitySet="Ticket_Booking">
+                <ScalarProperty Name="tktClass" ColumnName="tktClass" />
                 <ScalarProperty Name="PNR_No" ColumnName="PNR_No" />
                 <ScalarProperty Name="User_Id" ColumnName="User_Id" />
                 <ScalarProperty Name="Train_No" ColumnName="Train_No" />
@@ -398,9 +433,9 @@ warning 6002: The table/view 'miniproject.dbo.Seat' does not have a primary key 
           <EntitySetMapping Name="UserDetails">
             <EntityTypeMapping TypeName="miniprojectModel.UserDetail">
               <MappingFragment StoreEntitySet="UserDetails">
-                <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="User_Id" ColumnName="User_Id" />
                 <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="password" ColumnName="password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -430,8 +465,11 @@ warning 6002: The table/view 'miniproject.dbo.Seat' does not have a primary key 
           <FunctionImportMapping FunctionImportName="Add_seat" FunctionName="miniprojectModel.Store.Add_seat" />
           <FunctionImportMapping FunctionImportName="AddTrain" FunctionName="miniprojectModel.Store.AddTrain" />
           <FunctionImportMapping FunctionImportName="modifytrain" FunctionName="miniprojectModel.Store.modifytrain" />
-          <FunctionImportMapping FunctionImportName="Softdeletetrain" FunctionName="miniprojectModel.Store.Softdeletetrain" />
           <FunctionImportMapping FunctionImportName="SeatManageProc" FunctionName="miniprojectModel.Store.SeatManageProc" />
+          <FunctionImportMapping FunctionImportName="Softdeletetrain" FunctionName="miniprojectModel.Store.Softdeletetrain" />
+          <FunctionImportMapping FunctionImportName="addFare" FunctionName="miniprojectModel.Store.addFare" />
+          <FunctionImportMapping FunctionImportName="addseat" FunctionName="miniprojectModel.Store.addseat" />
+          <FunctionImportMapping FunctionImportName="SeatManageProcCan" FunctionName="miniprojectModel.Store.SeatManageProcCan" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

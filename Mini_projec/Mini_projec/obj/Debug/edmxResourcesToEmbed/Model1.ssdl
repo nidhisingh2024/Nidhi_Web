@@ -42,6 +42,7 @@ warning 6002: The table/view 'miniproject.dbo.Seat' does not have a primary key 
     <Property Name="TotalFare" Type="float" />
     <Property Name="Booking_time_date" Type="datetime" />
     <Property Name="tktstatus" Type="varchar" MaxLength="20" />
+    <Property Name="tktClass" Type="varchar" MaxLength="15" />
   </EntityType>
   <EntityType Name="TrainDetails">
     <Key>
@@ -121,6 +122,18 @@ warning 6002: The table/view 'miniproject.dbo.Seat' does not have a primary key 
     <Parameter Name="Sec_Ac" Type="int" Mode="In" />
     <Parameter Name="slp" Type="int" Mode="In" />
   </Function>
+  <Function Name="addFare" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tno" Type="int" Mode="In" />
+    <Parameter Name="firAcf" Type="int" Mode="In" />
+    <Parameter Name="SecAcf" Type="int" Mode="In" />
+    <Parameter Name="Slf" Type="int" Mode="In" />
+  </Function>
+  <Function Name="addseat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tno" Type="int" Mode="In" />
+    <Parameter Name="firAc" Type="int" Mode="In" />
+    <Parameter Name="SecAc" Type="int" Mode="In" />
+    <Parameter Name="Sl" Type="int" Mode="In" />
+  </Function>
   <Function Name="AddTrain" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="tno" Type="numeric" Mode="In" />
     <Parameter Name="tname" Type="varchar" Mode="In" />
@@ -135,7 +148,11 @@ warning 6002: The table/view 'miniproject.dbo.Seat' does not have a primary key 
   </Function>
   <Function Name="SeatManageProc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="TrainNo" Type="numeric" Mode="In" />
-    <Parameter Name="Class" Type="int" Mode="In" />
+    <Parameter Name="Class" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SeatManageProcCan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TrainNo" Type="numeric" Mode="In" />
+    <Parameter Name="Class" Type="varchar" Mode="In" />
   </Function>
   <Function Name="Softdeletetrain" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="trainno" Type="int" Mode="In" />
