@@ -1,7 +1,0 @@
-D:\WebTechnology\Assesment\Assesment1\Web_test1\Web_test1\bin\Debug\Web_test1.exe.config
-D:\WebTechnology\Assesment\Assesment1\Web_test1\Web_test1\bin\Debug\Web_test1.exe
-D:\WebTechnology\Assesment\Assesment1\Web_test1\Web_test1\bin\Debug\Web_test1.pdb
-D:\WebTechnology\Assesment\Assesment1\Web_test1\Web_test1\obj\Debug\Web_test1.csproj.CoreCompileInputs.cache
-D:\WebTechnology\Assesment\Assesment1\Web_test1\Web_test1\obj\Debug\Web_test1.exe
-D:\WebTechnology\Assesment\Assesment1\Web_test1\Web_test1\obj\Debug\Web_test1.pdb
-D:\WebTechnology\Assesment\Assesment1\Web_test1\Web_test1\obj\Debug\Web_test1.csproj.AssemblyReference.cache
