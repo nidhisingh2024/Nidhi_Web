@@ -1,0 +1,156 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Assement\\MvcCore_Test\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8A94123C-14DC-45BA-9062-277648597F4A}|MvcCore_Test\\MvcCore_Test.csproj|d:\\assement\\mvccore_test\\mvccore_test\\repository\\ekart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A94123C-14DC-45BA-9062-277648597F4A}|MvcCore_Test\\MvcCore_Test.csproj|solutionrelative:mvccore_test\\repository\\ekart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A94123C-14DC-45BA-9062-277648597F4A}|MvcCore_Test\\MvcCore_Test.csproj|d:\\assement\\mvccore_test\\mvccore_test\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A94123C-14DC-45BA-9062-277648597F4A}|MvcCore_Test\\MvcCore_Test.csproj|solutionrelative:mvccore_test\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A94123C-14DC-45BA-9062-277648597F4A}|MvcCore_Test\\MvcCore_Test.csproj|d:\\assement\\mvccore_test\\mvccore_test\\repository\\iekartrepositoryinterface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A94123C-14DC-45BA-9062-277648597F4A}|MvcCore_Test\\MvcCore_Test.csproj|solutionrelative:mvccore_test\\repository\\iekartrepositoryinterface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A94123C-14DC-45BA-9062-277648597F4A}|MvcCore_Test\\MvcCore_Test.csproj|d:\\assement\\mvccore_test\\mvccore_test\\models\\northwindcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A94123C-14DC-45BA-9062-277648597F4A}|MvcCore_Test\\MvcCore_Test.csproj|solutionrelative:mvccore_test\\models\\northwindcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A94123C-14DC-45BA-9062-277648597F4A}|MvcCore_Test\\MvcCore_Test.csproj|d:\\assement\\mvccore_test\\mvccore_test\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{8A94123C-14DC-45BA-9062-277648597F4A}|MvcCore_Test\\MvcCore_Test.csproj|solutionrelative:mvccore_test\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A94123C-14DC-45BA-9062-277648597F4A}|MvcCore_Test\\MvcCore_Test.csproj|d:\\assement\\mvccore_test\\mvccore_test\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A94123C-14DC-45BA-9062-277648597F4A}|MvcCore_Test\\MvcCore_Test.csproj|solutionrelative:mvccore_test\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A94123C-14DC-45BA-9062-277648597F4A}|MvcCore_Test\\MvcCore_Test.csproj|d:\\assement\\mvccore_test\\mvccore_test\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A94123C-14DC-45BA-9062-277648597F4A}|MvcCore_Test\\MvcCore_Test.csproj|solutionrelative:mvccore_test\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A94123C-14DC-45BA-9062-277648597F4A}|MvcCore_Test\\MvcCore_Test.csproj|d:\\assement\\mvccore_test\\mvccore_test\\mvccore_test.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{8A94123C-14DC-45BA-9062-277648597F4A}|MvcCore_Test\\MvcCore_Test.csproj|solutionrelative:mvccore_test\\mvccore_test.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "D:\\Assement\\MvcCore_Test\\MvcCore_Test\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "MvcCore_Test\\Controllers\\OrderController.cs",
+              "ToolTip": "D:\\Assement\\MvcCore_Test\\MvcCore_Test\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "MvcCore_Test\\Controllers\\OrderController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-08T06:46:19.235Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Ekart.cs",
+              "DocumentMoniker": "D:\\Assement\\MvcCore_Test\\MvcCore_Test\\Repository\\Ekart.cs",
+              "RelativeDocumentMoniker": "MvcCore_Test\\Repository\\Ekart.cs",
+              "ToolTip": "D:\\Assement\\MvcCore_Test\\MvcCore_Test\\Repository\\Ekart.cs",
+              "RelativeToolTip": "MvcCore_Test\\Repository\\Ekart.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAA1wAsAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-08T04:37:24.152Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IEkartRepositoryInterface.cs",
+              "DocumentMoniker": "D:\\Assement\\MvcCore_Test\\MvcCore_Test\\Repository\\IEkartRepositoryInterface.cs",
+              "RelativeDocumentMoniker": "MvcCore_Test\\Repository\\IEkartRepositoryInterface.cs",
+              "ToolTip": "D:\\Assement\\MvcCore_Test\\MvcCore_Test\\Repository\\IEkartRepositoryInterface.cs",
+              "RelativeToolTip": "MvcCore_Test\\Repository\\IEkartRepositoryInterface.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-08T04:36:46.065Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Assement\\MvcCore_Test\\MvcCore_Test\\Program.cs",
+              "RelativeDocumentMoniker": "MvcCore_Test\\Program.cs",
+              "ToolTip": "D:\\Assement\\MvcCore_Test\\MvcCore_Test\\Program.cs",
+              "RelativeToolTip": "MvcCore_Test\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-08T04:19:56.188Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Assement\\MvcCore_Test\\MvcCore_Test\\appsettings.json",
+              "RelativeDocumentMoniker": "MvcCore_Test\\appsettings.json",
+              "ToolTip": "D:\\Assement\\MvcCore_Test\\MvcCore_Test\\appsettings.json",
+              "RelativeToolTip": "MvcCore_Test\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-05-08T04:14:12.803Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "NorthwindContext.cs",
+              "DocumentMoniker": "D:\\Assement\\MvcCore_Test\\MvcCore_Test\\Models\\NorthwindContext.cs",
+              "RelativeDocumentMoniker": "MvcCore_Test\\Models\\NorthwindContext.cs",
+              "ToolTip": "D:\\Assement\\MvcCore_Test\\MvcCore_Test\\Models\\NorthwindContext.cs",
+              "RelativeToolTip": "MvcCore_Test\\Models\\NorthwindContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-08T04:31:50.555Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MvcCore_Test",
+              "DocumentMoniker": "D:\\Assement\\MvcCore_Test\\MvcCore_Test\\MvcCore_Test.csproj",
+              "RelativeDocumentMoniker": "MvcCore_Test\\MvcCore_Test.csproj",
+              "ToolTip": "D:\\Assement\\MvcCore_Test\\MvcCore_Test\\MvcCore_Test.csproj",
+              "RelativeToolTip": "MvcCore_Test\\MvcCore_Test.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-05-08T04:32:31.529Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Order.cs",
+              "DocumentMoniker": "D:\\Assement\\MvcCore_Test\\MvcCore_Test\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "MvcCore_Test\\Models\\Order.cs",
+              "ToolTip": "D:\\Assement\\MvcCore_Test\\MvcCore_Test\\Models\\Order.cs",
+              "RelativeToolTip": "MvcCore_Test\\Models\\Order.cs",
+              "ViewState": "AQIAABoAAAAAAAAAAAAUwCYAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-08T05:17:08.526Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
